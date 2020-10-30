@@ -15,6 +15,4 @@ I use a combination of bspwm+zsh+alacritty, but I also include these dotfiles:
 
 included scripts:
 
-- system maintenance script (does lots of stuff)
 - resolution changer (frontend for xrandr)
-- AUR helper (type in an AUR package and it will clone, make and install it)
