@@ -25,8 +25,9 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/jz/.zshrc'
 
-autoload -Uz compinit
+autoload -Uz compinit promptinit
 compinit
+promptinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zhist
@@ -37,7 +38,8 @@ unsetopt beep notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # Custom stuff now
-export PS1="%F{white}%n@%m %1~ %F{red}%? %F{white}%#" 
+# export PS1="%F{white}%n@%m %1~ %F{red}%? %F{white}%#" 
+prompt suse
 export EDITOR=vim
 export VISUAL=vim
 
