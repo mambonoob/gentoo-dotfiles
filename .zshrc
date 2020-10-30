@@ -75,17 +75,19 @@ alias install="sudo emerge -a"
 alias remove="sudo emerge -a --deselect"
 alias depclean="sudo emerge -a --depclean -v"
 alias depclean-p="sudo emerge -a --depclean -vp"
-alias upgrade="emerge -uDU --keep-going --with-bdeps=y @world"
-alias enable="sudo rc-update add $1 default"
-alias disable="sudo rc-update remove $1 default"
-alias start="sudo rc-service $1 start"
-alias stop="sudo rc-service $1 stop"
-alias restart="sudo rc-service $1 restart"
+alias upgrade="emerge -uDUNa --keep-going --with-bdeps=y @world"
+alias add="sudo rc-update add"
+alias delete="sudo rc-update delete"
+alias service="sudo rc-service"
+alias start="service"
+alias stop="service"
+alias restart="service"
 alias i=install
 alias r=remove
 alias u=upgrade
-alias e=enable
-alias d=disable
+alias a=add
+alias d=delete
+alias s="service"
 alias sta=start
 alias sto=stop
 alias re=restart
