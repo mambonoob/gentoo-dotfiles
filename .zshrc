@@ -29,7 +29,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.zhistfile
+HISTFILE=~/.zhist
 HISTSIZE=1000
 SAVEHIST=10000
 setopt autocd extendedglob nomatch
@@ -37,10 +37,9 @@ unsetopt beep notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # Custom stuff now
-export PS1="%F{12}%n%F{15}@%M %F{red}%? %F{15}%1~ %F{13}%#%F{15} "
-export RPS1="%~"
-export EDITOR=nvim
-export VISUAL=nvim
+export PS1="%F{white}%n@%m %1~ %F{red}%? %F{white}%#" 
+export EDITOR=vim
+export VISUAL=vim
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
@@ -70,27 +69,25 @@ ex ()
 }
 
 # convenience aliases
-alias install="sudo pacman -S"
-alias remove="sudo pacman -Rns"
-alias upgrade="sudo pacman -Syu"
-alias enable="sudo systemctl enable"
-alias enablenow="enable --now"
-alias disable="sudo systemctl disable"
-alias disablenow="disable --now"
-alias start="sudo systemctl start"
-alias stop="sudo systemctl stop"
-alias restart="sudo systemctl restart"
+alias install="sudo emerge -a"
+alias remove="sudo emerge -a --deselect"
+alias depclean="sudo emerge -a --depclean -v"
+alias depclean-p="sudo emerge -a --depclean -vp"
+alias upgrade="emerge -uDU --keep-going --with-bdeps=y @world"
+alias enable="sudo rc-update add $1 default"
+alias disable="sudo rc-update remove $1 default"
+alias start="sudo rc-service $1 start"
+alias stop="sudo rc-service $1 stop"
+alias restart="sudo rc-service $1 restart"
 alias i=install
 alias r=remove
 alias u=upgrade
 alias e=enable
-alias en=enablenow
 alias d=disable
-alias dn=disablenow
 alias sta=start
 alias sto=stop
 alias re=restart
-alias testnet-web="ping archlinux.org"
+alias testnet-web="ping gentoo.org"
 alias testnet-dns="ping 8.8.8.8"
 
 # misc aliases
@@ -99,16 +96,7 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-alias vim="nvim"
-alias pacsyu='sudo pacman -Syyu'                 # update only standard pkgs
-alias yaysua="yay -Sua --noconfirm"              # update only AUR pkgs
-alias yaysyu="yay -Syu --noconfirm"              # update standard pkgs and AUR pkgs
-alias unlock="sudo rm /var/lib/pacman/db.lck"    # remove pacman lock
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias vim="/usr/bin/vim"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
@@ -117,13 +105,8 @@ alias l.='exa -a | egrep "^\."'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias cp="cp -iv"
-alias mv='mv -iv'
-alias rm='rm -iv'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
-alias vifm='./.config/vifm/scripts/vifmrun'
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
@@ -144,7 +127,6 @@ alias newtag='git tag -a'
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 alias merge='xrdb -merge ~/.Xresources'
-alias jctl="journalctl -p 3 -xb"
 alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -156,11 +138,10 @@ alias yta-opus="youtube-dl --extract-audio --audio-format opus "
 alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
-# bare git repo alias for dotfiles
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
-alias tb="nc termbin.com 9999"
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-alias sdc='sudo rsync -avrzhe --exclude={"~/.config/discord", "~/.config/zoomus.conf"} --ignore-existing ~/.config/* ~/my/.config'
-alias cpf="/bin/cp -v"
-alias rmf="/bin/rm -v"
-alias mvf="/bin/mv -v"
+alias cpf="/bin/cp -vf"
+alias rmf="/bin/rm -vf"
+alias mvf="/bin/mv -vf"
+alias cp="cp -iv"
+alias mv='mv -iv'
+alias rm='rm -iv'
