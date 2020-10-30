@@ -3,7 +3,6 @@ set expandtab
 set hidden
 set ignorecase
 set smartcase
-set termguicolors
 set mouse=a
 set nobackup
 set shiftwidth=4
