@@ -171,26 +171,26 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks
 	colors {
-           background #8500d8
+           background #87ceeb
            statusline #eeeeee
            separator #666666
            #                  border  backgr. text
-           focused_workspace  #23013d #8500d8 #ffffff
-           active_workspace   #23013d #23013d #ffffff
-           inactive_workspace #8500d8 #23013d #ffffff
+           focused_workspace  #87ceeb #87ceeb #000000
+           active_workspace   #87ceeb #87ceeb #ffffff
+           inactive_workspace #87ceeb #87ceeb #ffffff
            urgent_workspace   #2f343a #900000 #ffffff
         }
 }
 # colors
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #8500d8 #8500d8 #ffffff #890d7d   #8500d8
+client.focused          #87ceeb #87ceeb #ffffff #890d7d   #87ceeb
 client.focused_inactive #4f4f4f #4f4f4f #ffffff #484e50   #4f4f4f
 client.unfocused        #4f4f4f #4f4f4f #ffffff #292d2e   #4f4f4f
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #23013d #ffffff #000000   #23013d
+client.placeholder      #000000 #87ceeb #ffffff #000000   #87ceeb
 
 client.background       #ffffff
 
