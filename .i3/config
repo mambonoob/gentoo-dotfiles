@@ -46,9 +46,11 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+c kill
 
-# start Rofi in fullscreen (a program launcher)
-# colors are controlled in your .Xresources
-bindsym $mod+Shift+Return exec rofi -show drun -lines 10 -show-icons -icon-theme "Flat-Remix-Green-Dark" -eh 1 -width 100 -padding 500 -opacity "100" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Nimbus Sans L 18"
+# start Rofi
+# I had troubles getting i3 to actually start Rofi the way I wanted it to so I just put it in /usr/bin/rofi_run
+# The source code (following the shebang) is:
+# rofi -combi-modi window,drun,ssh -theme Adapta-Nokto -font 'nimbus sans l 12' -show combi -icon-theme 'Flat-Remix-Green-Dark' -show-icons
+bindsym $mod+Shift+Return exec rofi_run
 
 # change focus
 bindsym $mod+h focus left
@@ -201,6 +203,10 @@ bar {
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
+# gaps 
+gaps inner 5
+gaps outer 5
+for_window [class="^.*"] border pixel 3
 
 ###               ###
 ### open programs ###
@@ -230,15 +236,7 @@ bindsym $mod+e exec alacritty -e vim
 # file manager
 bindsym $mod+t exec pcmanfm
 
-# discord
-exec discord
-
 # browser
 exec firefox
 
-#####               #####
-#####               #####
-##### End of config #####
-#####               #####
-#####               #####
 
