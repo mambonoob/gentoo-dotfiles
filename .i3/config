@@ -179,7 +179,7 @@ bar {
            #                  border  backgr. text
            focused_workspace  #8500d8 #8500d8 #ffffff
            active_workspace   #23013d #23013d #ffffff
-           inactive_workspace #23013d #23013d #23013d
+           inactive_workspace #8500d8 #23013d #ffffff
            urgent_workspace   #2f343a #900000 #ffffff
         }
 }
