@@ -48,10 +48,6 @@ bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+Return exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -140,10 +136,8 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Alt+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+q restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -178,8 +172,28 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	colors {
+           background #23013d
+           statusline #eeeeee
+           separator #666666
+           #                  border  backgr. text
+           focused_workspace  #8500d8 #8500d8 #ffffff
+           active_workspace   #23013d #23013d #ffffff
+           inactive_workspace #23013d #23013d #23013d
+           urgent_workspace   #2f343a #900000 #ffffff
+        }
 }
+# colors
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #8500d8 #8500d8 #ffffff #890d7d   #8500d8
+client.focused_inactive #23013d #23013d #ffffff #484e50   #23013d
+client.unfocused        #23013d #23013d #ffffff #292d2e   #23013d
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #23013d #ffffff #000000   #23013d
+
+client.background       #ffffff
 
 # start programs
 exec_always picom
-exec_always xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120
+exec_always xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144
