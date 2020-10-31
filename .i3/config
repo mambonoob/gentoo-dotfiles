@@ -173,11 +173,11 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 	colors {
-           background #23013d
+           background #8500d8
            statusline #eeeeee
            separator #666666
            #                  border  backgr. text
-           focused_workspace  #8500d8 #8500d8 #ffffff
+           focused_workspace  #23013d #8500d8 #ffffff
            active_workspace   #23013d #23013d #ffffff
            inactive_workspace #8500d8 #23013d #ffffff
            urgent_workspace   #2f343a #900000 #ffffff
@@ -187,8 +187,8 @@ bar {
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #8500d8 #8500d8 #ffffff #890d7d   #8500d8
-client.focused_inactive #23013d #23013d #ffffff #484e50   #23013d
-client.unfocused        #23013d #23013d #ffffff #292d2e   #23013d
+client.focused_inactive #4f4f4f #4f4f4f #ffffff #484e50   #4f4f4f
+client.unfocused        #4f4f4f #4f4f4f #ffffff #292d2e   #4f4f4f
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #23013d #ffffff #000000   #23013d
 
