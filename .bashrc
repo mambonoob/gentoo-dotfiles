@@ -101,8 +101,9 @@ alias em="/usr/bin/emacs -nw"
 alias emacs="emacsclient -c -a 'emacs'"
 
 # emerge
-alias sysupgrade='sudo emerge -aUuDNv && sudo emerge -c' # upgrade system & remove orphans
-alias cleanup='sudo emerge -c'                           # remove orphaned packages
+alias sysupgrade='sudo emerge -aUuDNv @world' # upgrade system
+alias cleanup='sudo emerge -cv'                           # remove orphaned packages
+alias fakeclean='sudo emerge -cvp'                           # see what packages would be removed by depclean
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
