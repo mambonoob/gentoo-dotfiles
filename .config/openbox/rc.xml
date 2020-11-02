@@ -322,7 +322,7 @@
           <enabled>true</enabled>
           <name>Rofi</name>
         </startupnotify>
-        <command>rofi -show run -theme solarized</command>
+        <command>rofi -combi-modi window,drun,ssh -theme purple -font "noto sans 11" -show combi -icon-theme "Flat-Remix-Blue" -show-icons</command>
       </action>
     </keybind>
     <keybind key="W-Return">
@@ -332,6 +332,15 @@
           <name>Terminal</name>
         </startupnotify>
         <command>alacritty</command>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Text Editor</name>
+        </startupnotify>
+        <command>alacritty -e nvim</command>
       </action>
     </keybind>
   </keyboard>

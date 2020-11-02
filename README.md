@@ -5,13 +5,13 @@ I'm only putting these on here since I uninstall/reinstall a lot and like to kee
 
 I use a combination of i3+zsh+alacritty, but I also include these dotfiles:
 
+- openbox
 - i3
-- bspwm/sxhkd
 - Alacritty
-- zsh, fish and bash config
+- .bashrc 
 - .Xresources
-- vim
-- a bunch of other shit
+- (n)vim
+- some other stuff
 
 included scripts:
 
