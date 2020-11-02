@@ -3,7 +3,7 @@ personal Gentoo dotfiles + scripts
 
 I'm only putting these on here since I uninstall/reinstall a lot and like to keep my dots updated.
 
-I use a combination of i3+zsh+alacritty, but I also include these dotfiles:
+I use a combination of openbox+bash+alacritty, but I also include these dotfiles:
 
 - openbox
 - i3
