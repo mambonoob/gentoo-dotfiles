@@ -11,8 +11,8 @@
 export TERM="xterm-256color"              # getting proper colors
 export HISTCONTROL=ignoredups:erasedups   # no duplicate entries
 export ALTERNATE_EDITOR=""                # setting for emacsclient
-export EDITOR="vim"      		  # $EDITOR use Vim in terminal
-export VISUAL="vim"		          # $VISUAL use Vim in terminal
+export EDITOR="nvim"                      # $EDITOR use NVim in terminal
+export VISUAL="gvim"                      # $VISUAL use GVim in GUI mode
 
 # sets vim as manpager
 export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
@@ -95,14 +95,48 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
+# convenience aliases
+alias install="sudo pacman -S"
+alias remove="sudo pacman -Rns"
+alias upgrade="sudo pacman -Syu"
+alias enable="sudo systemctl enable"
+alias enablenow="enable --now"
+alias disable="sudo systemctl disable"
+alias disablenow="disable --now"
+alias start="sudo systemctl start"
+alias stop="sudo systemctl stop"
+alias restart="sudo systemctl restart"
+alias i=install
+alias r=remove
+alias u=upgrade
+alias e=enable
+alias en=enablenow
+alias d=disable
+alias dn=disablenow
+alias sta=start
+alias sto=stop
+alias re=restart
+alias testnet-web="ping archlinux.org"
+alias testnet-dns="ping 8.8.8.8"
+alias sdc='sudo rsync -avrzhe --ignore-existing ~/.config/* ~/my/dot_files/.config'
+
 # vim and emacs
 alias vim="nvim"
-alias em="/usr/bin/emacs -nw"
-alias emacs="emacsclient -c -a 'emacs'"
+alias vi='nvim'
 
-# emerge
-alias sysupgrade='sudo emerge -aUuDNv && sudo emerge -c' # upgrade system & remove orphans
-alias cleanup='sudo emerge -c'                           # remove orphaned packages
+# pacman and yay
+alias pacsyu='sudo pacman -Syyu'                 # update only standard pkgs
+alias yaysua="yay -Sua --noconfirm"              # update only AUR pkgs
+alias yaysyu="yay -Syu --noconfirm"              # update standard pkgs and AUR pkgs
+alias unlock="sudo rm /var/lib/pacman/db.lck"    # remove pacman lock
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
+
+# get fastest mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrorr="sudo reflector --latest 50 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -117,9 +151,12 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
+alias cp="cp -iv"
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias cpf="/bin/cp -v"
+alias mvf="/bin/mv -v"
+alias rmf="/bin/rm -v"
 
 # adding flags
 alias df='df -h'                          # human-readable sizes
@@ -153,6 +190,10 @@ alias sr="sudo reboot"
 
 # Merge Xresources
 alias merge='xrdb -merge ~/.Xresources'
+alias xres='xrdb ~/.Xresources'
+
+# get error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
 
 # gpg encryption
 # verify signature for isos
@@ -171,5 +212,12 @@ alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
+# switch between shells
+alias tobash="sudo chsh $USER -s /usr/bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /usr/bin/zsh && echo 'Now log out.'"
+alias tofish="sudo chsh $USER -s /usr/bin/fish && echo 'Now log out.'"
+
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+
+
