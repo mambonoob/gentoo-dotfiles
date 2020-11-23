@@ -14,8 +14,8 @@
 # set windows key as mod
 set $mod Mod4
 
-# set font to Fira Code
-font pango:Fira Code 14
+# set font to JetBrains Mono
+font pango:JetBrains Mono 14
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -235,6 +235,9 @@ exec picom
 
 # text editor
 bindsym $mod+e exec emacsclient -c
+
+# screenshot
+bindsym $mod+Shift+s exec xfce4-screenshooter
 
 # file manager
 bindsym $mod+t exec pcmanfm
