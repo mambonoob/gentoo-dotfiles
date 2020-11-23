@@ -5,7 +5,7 @@
 ##### mambo i3 config #####
 #####                 #####
 #####                 #####
-#####   Oct 01 2020   #####
+#####   22 Nov 2020   #####
 #####                 #####
 #####                 #####
 #####                 #####
@@ -14,8 +14,8 @@
 # set windows key as mod
 set $mod Mod4
 
-# set font to Nimbus Sans L
-font pango:Nimbus Sans L 14
+# set font to Fira Code
+font pango:Fira Code 14
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -43,13 +43,16 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 
+# shutdown, reboot, etc
+bindsym $mod+Shift+x exec alacritty -e .local/share/bin/session.sh
+
 # kill focused window
 bindsym $mod+Shift+c kill
 
 # start Rofi
 # I had troubles getting i3 to actually start Rofi the way I wanted it to so I just put it in /usr/bin/rofi_run
 # The source code (following the shebang) is:
-# rofi -combi-modi window,drun,ssh -theme Adapta-Nokto -font 'nimbus sans l 12' -show combi -icon-theme 'Flat-Remix-Green-Dark' -show-icons
+# rofi -combi-modi window,drun,ssh -theme solarized_alternate -font "fira code 11" -show combi -icon-theme "Flat-Remix-Green-Dark" -show-icons
 bindsym $mod+Shift+Return exec rofi_run
 
 # change focus
@@ -176,16 +179,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Colors
-set $bg-color 	         #ffffff
-set $inactive-bg-color   #506773
+set $bg-color 	         #0ac3fc
+set $inactive-bg-color   #053442
 set $text-color          #FFFFFF
-set $inactive-text-color #a9a9a9
+set $inactive-text-color #4f4f4f
 set $urgent-bg-color     #E53935
 
 #                       border              background         text                 indicator
 client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color  #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 #
 
@@ -216,7 +219,7 @@ for_window [class="^.*"] border pixel 3
 exec_always --no-startup-id nitrogen --restore
 
 # proper refresh rate and resolution
-exec_always --no-startup-id xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144.00
+exec_always --no-startup-id xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 --primary --left-of DisplayPort-2 --output DisplayPort-2 --mode 1920x1080 --rate 144 &
 
 # normal looking mouse
 exec_always --no-startup-id xsetroot -cursor_name left_ptr
@@ -231,12 +234,7 @@ exec_always --no-startup-id xinput --set-prop 9 'libinput Accel Speed' -1
 exec picom
 
 # text editor
-bindsym $mod+e exec alacritty -e vim
+bindsym $mod+e exec emacsclient -c
 
 # file manager
 bindsym $mod+t exec pcmanfm
-
-# browser
-exec firefox
-
-
