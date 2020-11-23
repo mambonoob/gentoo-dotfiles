@@ -1,6 +1,9 @@
 picom &
 # sxhkd &
-xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 --primary --right-of DisplayPort-2 --output DisplayPort-2 --mode 1920x1080 --rate 144 &
-xinput --set-prop * 'libinput Accel Speed' -1 &
 nitrogen --restore &
+xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 --primary --left-of DisplayPort-2 --output DisplayPort-2 --mode 1920x1080 --rate 144 &
+xinput --set-prop * 'libinput Accel Speed' -1 &
 tint2 &
+xinput --set-prop 8 'libinput Accel Speed' -1
+xinput --set-prop 9 'libinput Accel Speed' -1
+xinput --set-prop 7 'libinput Accel Speed' -1

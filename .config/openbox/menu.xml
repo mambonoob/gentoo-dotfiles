@@ -2,6 +2,9 @@
 <openbox_menu>
     <menu id="root-menu" label="OpenBox 3">
         <menu id="1" label="Development">
+            <item label="CMake"> <action name="Execute">
+                <execute>cmake-gui</execute>
+            </action> </item>
             <item label="CMake curses GUI (ccmake)"> <action name="Execute">
                 <execute>alacritty -e ccmake</execute>
             </action> </item>
@@ -11,13 +14,25 @@
             <item label="Python"> <action name="Execute">
                 <execute>alacritty -e python</execute>
             </action> </item>
+            <item label="Qt4 Assistant"> <action name="Execute">
+                <execute>assistant</execute>
+            </action> </item>
+            <item label="Qt4 Designer"> <action name="Execute">
+                <execute>designer</execute>
+            </action> </item>
+            <item label="Qt4 Linguist"> <action name="Execute">
+                <execute>linguist</execute>
+            </action> </item>
             <item label="Tclsh8.6"> <action name="Execute">
                 <execute>alacritty -e tclsh8.6</execute>
             </action> </item>
         </menu>
         <menu id="2" label="Editors">
-            <item label="Neovim"> <action name="Execute">
-                <execute>alacritty -e nvim</execute>
+            <item label="Emacs"> <action name="Execute">
+                <execute>alacritty -e emacs</execute>
+            </action> </item>
+            <item label="Nano"> <action name="Execute">
+                <execute>alacritty -e nano</execute>
             </action> </item>
             <item label="Vi"> <action name="Execute">
                 <execute>alacritty -e vi</execute>
@@ -32,6 +47,9 @@
                     <execute>bb</execute>
                 </action> </item>
             </menu>
+            <item label="Team Fortress 2"> <action name="Execute">
+                <execute>steam steam://rungameid/440</execute>
+            </action> </item>
         </menu>
         <menu id="6" label="Graphics">
             <item label="MuPDF"> <action name="Execute">
@@ -44,8 +62,14 @@
             </action> </item>
         </menu>
         <menu id="5" label="Network">
+            <item label="Discord"> <action name="Execute">
+                <execute>/opt/discord/Discord</execute>
+            </action> </item>
             <item label="Mozilla Firefox (bin)"> <action name="Execute">
                 <execute>firefox-bin</execute>
+            </action> </item>
+            <item label="Steam"> <action name="Execute">
+                <execute>steam</execute>
             </action> </item>
             <item label="W3m"> <action name="Execute">
                 <execute>alacritty -e w3m</execute>
@@ -66,6 +90,12 @@
             <item label="GIT"> <action name="Execute">
                 <execute>alacritty -e git</execute>
             </action> </item>
+            <item label="rc"> <action name="Execute">
+                <execute>alacritty -e rc</execute>
+            </action> </item>
+            <item label="Vifm"> <action name="Execute">
+                <execute>alacritty -e vifm</execute>
+            </action> </item>
         </menu>
         <menu id="37" label="System">
             <menu id="36" label="Settings">
@@ -85,11 +115,17 @@
                     <execute>tint2conf</execute>
                 </action> </item>
             </menu>
+            <item label="Htop"> <action name="Execute">
+                <execute>alacritty -e htop</execute>
+            </action> </item>
             <item label="pstree"> <action name="Execute">
                 <execute>alacritty -e pstree.x11</execute>
             </action> </item>
             <item label="pstree"> <action name="Execute">
                 <execute>alacritty -e pstree</execute>
+            </action> </item>
+            <item label="QtConfig"> <action name="Execute">
+                <execute>qtconfig</execute>
             </action> </item>
             <item label="Tint2"> <action name="Execute">
                 <execute>tint2</execute>
