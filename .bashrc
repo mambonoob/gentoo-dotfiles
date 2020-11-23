@@ -1,11 +1,12 @@
-# Mambo .bashrc
+# joznia's BASH config
+# Edited version of DistroTube's
 
 ### EXPORT
-export TERM="xterm-256color"              # getting proper colors
+#export TERM="xterm-256color"             # getting proper colors
 export HISTCONTROL=ignoredups:erasedups   # no duplicate entries
 export ALTERNATE_EDITOR=""                # setting for emacsclient
-export EDITOR="vim"      		  # $EDITOR use Vim in terminal
-export VISUAL="vim"		          # $VISUAL use Vim in terminal
+export EDITOR="emacsclient -t -a ''"      # $EDITOR use Emacs in terminal
+export VISUAL="emacsclient -c -a emacs"   # $VISUAL use Emacs in GUI mode
 
 # sets vim as manpager
 export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
@@ -18,9 +19,6 @@ bind -m vi-insert 'Control-l: clear-screen'
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-### PROMPT
-PS1='[\u@\h \W]\$ '
-
 ### PATH
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
@@ -31,14 +29,14 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 
 ### CHANGE TITLE OF TERMINALS
-case ${TERM} in
-  xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-        ;;
-  screen*)
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-    ;;
-esac
+# case ${TERM} in
+#   xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)
+#     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+#         ;;
+#   screen*)
+#     PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
+#     ;;
+# esac
 
 ### SHOPT
 shopt -s autocd # change to named directory
@@ -81,6 +79,9 @@ ex ()
 
 ### ALIASES ###
 
+# root privileges
+alias doas="doas --"
+
 # navigation
 alias ..='cd ..' 
 alias ...='cd ../..'
@@ -91,12 +92,16 @@ alias .5='cd ../../../../..'
 # vim and emacs
 alias vim="nvim"
 alias em="/usr/bin/emacs -nw"
+alias ema="emacsclient -nt"
 alias emacs="emacsclient -c -a 'emacs'"
+alias doom="~/.emacs.d/bin/doom"
 
-# emerge
-alias sysupgrade='sudo emerge -aUuDNv @world' # upgrade system
-alias cleanup='sudo emerge -cv'                           # remove orphaned packages
-alias fakeclean='sudo emerge -cvp'                           # see what packages would be removed by depclean
+# Portage
+alias emsync="sudo emerge --sync"
+alias sysupgrade="sudo emerge -UDuaN @world"          # Update all packages on system
+alias depclean="sudo emerge -ca"                      # Clean orphaned packages
+alias dep=depclean                                    # ^
+alias makeconf="sudo $EDITOR /etc/portage/make.conf"  # Edit make.conf
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -114,6 +119,9 @@ alias fgrep='fgrep --color=auto'
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
+alias cpf="/bin/cp -f"
+alias mvf="/bin/mv -f"
+alias rmf="/bin/rm -f"
 
 # adding flags
 alias df='df -h'                          # human-readable sizes
@@ -137,13 +145,9 @@ alias commit='git commit -m'
 alias fetch='git fetch'
 alias pull='git pull origin'
 alias push='git push origin'
-alias gs='git status'
+alias status='git status'
 alias tag='git tag'
 alias newtag='git tag -a'
-
-# shutdown or reboot
-alias ssn="sudo shutdown now"
-alias sr="sudo reboot"
 
 # Merge Xresources
 alias merge='xrdb -merge ~/.Xresources'
@@ -164,6 +168,12 @@ alias yta-opus="youtube-dl --extract-audio --audio-format opus "
 alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+
+# bare git repo alias for dotfiles
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+
+# termbin
+alias tb="nc termbin.com 9999"
 
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
