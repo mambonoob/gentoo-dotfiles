@@ -3,8 +3,9 @@ personal Gentoo dotfiles + scripts
 
 I'm only putting these on here since I uninstall/reinstall a lot and like to keep my dots updated.
 
-I use a combination of openbox+bash+alacritty, but I also include these dotfiles:
+I include these dotfiles:
 
+- Doom Emacs/EXWM
 - openbox
 - i3
 - Alacritty
@@ -16,3 +17,4 @@ I use a combination of openbox+bash+alacritty, but I also include these dotfiles
 included scripts:
 
 - resolution changer (frontend for xrandr)
+- simple rofi loader to simplify i3 config
