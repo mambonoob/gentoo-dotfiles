@@ -1,0 +1,2 @@
+#!/bin/bash
+rofi -combi-modi window,drun,ssh -theme solarized_alternate -font "JetBrains Mono 11" -show combi -icon-theme "Papirus" -show-icons
