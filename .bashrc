@@ -5,7 +5,7 @@
 #export TERM="xterm-256color"             # getting proper colors
 export HISTCONTROL=ignoredups:erasedups   # no duplicate entries
 export ALTERNATE_EDITOR=""                # setting for emacsclient
-export EDITOR="emacsclient -t -a ''"      # $EDITOR use Emacs in terminal
+export EDITOR="nvim"
 export VISUAL="emacsclient -c -a emacs"   # $VISUAL use Emacs in GUI mode
 
 # sets vim as manpager
@@ -89,11 +89,11 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# vim and emacs
+# Vim and Emacs
 alias vim="nvim"
-alias em="/usr/bin/emacs -nw"
-alias ema="emacsclient -nt"
-alias emacs="emacsclient -c -a 'emacs'"
+alias em="emacsclient -nt"
+alias emacs="emacs"
+alias emacsc="emacsclient -c -a 'emacs'"
 alias doom="~/.emacs.d/bin/doom"
 
 # Portage
@@ -102,6 +102,9 @@ alias sysupgrade="sudo emerge -UDuaN @world"          # Update all packages on s
 alias depclean="sudo emerge -ca"                      # Clean orphaned packages
 alias dep=depclean                                    # ^
 alias makeconf="sudo $EDITOR /etc/portage/make.conf"  # Edit make.conf
+alias pkgcount='equery list "*" | wc -l'              # Get number of packages on the system
+alias pkglist='equery list "*"'                       # Get list of packages
+alias manualpkgs='cat /var/lib/portage/world'         # Get explicitly emerge'd packages
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
